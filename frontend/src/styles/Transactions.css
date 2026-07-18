@@ -1,0 +1,43 @@
+.transactions-page .row-actions .btn {
+  min-width: 72px;
+}
+
+.contact-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 0.85rem;
+  background-color: var(--color-bg);
+  border-radius: var(--radius-sm);
+}
+
+.contact-block strong {
+  display: block;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.contact-block p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.modal-actions-wrap {
+  flex-wrap: wrap;
+}
+
+.payment-pending-flag {
+  color: var(--color-warning);
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .contact-block {
+    grid-template-columns: 1fr;
+  }
+}
+

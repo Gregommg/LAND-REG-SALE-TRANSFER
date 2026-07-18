@@ -1,0 +1,108 @@
+# Render Blueprint for this project.
+#
+# IMPORTANT DATABASE NOTE: this intentionally does NOT provision a Render
+# free PostgreSQL database, because Render's free Postgres is auto-deleted
+# 30 days after creation (with a 14-day grace period to upgrade before your
+# data is gone for good). That's a real trap for anything with actual land
+# records in it. Instead, this points the backend at an external Postgres
+# via manually-entered env vars - Neon (neon.tech) is a good free choice:
+# its free tier genuinely never expires. Create a free Neon project first,
+# then fill in DB_HOST/DB_PORT/DB_NAME/DB_USER/DB_PASSWORD/DB_SSL below
+# (Render will prompt for each `sync: false` value during blueprint setup).
+#
+# If you'd rather use Render's own Postgres anyway (e.g. for a short-lived
+# class demo where 30 days is plenty), see the commented-out `databases:`
+# block at the bottom of this file.
+
+services:
+  # --- Backend API -----------------------------------------------------------
+  - type: web
+    name: land-registration-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Fill these in with your external Postgres provider's connection
+      # details (e.g. from your Neon project's dashboard).
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: 5432
+      - key: DB_NAME
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      # Neon, Supabase, and most other external free Postgres providers
+      # require SSL - leave this "true" unless you switched to the
+      # commented-out Render-Postgres option below, which doesn't need it.
+      - key: DB_SSL
+        value: "true"
+      - key: JWT_SECRET
+        generateValue: true
+      # MESSAGE_ENCRYPTION_KEY must be exactly 64 hex characters (32 bytes).
+      # Render's auto-generated values aren't guaranteed to match that shape,
+      # so this is intentionally left for you to fill in manually. Generate
+      # one with:
+      #   node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+      - key: MESSAGE_ENCRYPTION_KEY
+        sync: false
+      # Update this to the frontend service's real URL once it's deployed
+      # (Render assigns the final *.onrender.com URL on first deploy).
+      - key: CLIENT_URL
+        value: https://land-registration-frontend.onrender.com
+    # NOTE: persistent disks require a paid instance type. On the free plan
+    # above, uploaded photos/ID documents/title deeds do NOT survive a
+    # redeploy or restart. To persist them, upgrade this service's plan to
+    # "starter" or above and uncomment the disk block:
+    # disk:
+    #   name: uploads
+    #   mountPath: /opt/render/project/src/backend/uploads
+    #   sizeGB: 1
+
+  # --- Frontend (static build) ------------------------------------------------
+  - type: web
+    name: land-registration-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      # Update these to the backend service's real URL once it's deployed.
+      - key: VITE_API_BASE_URL
+        value: https://land-registration-backend.onrender.com/api
+      - key: VITE_UPLOADS_BASE_URL
+        value: https://land-registration-backend.onrender.com/uploads
+    routes:
+      # React Router uses client-side routing - every path must serve
+      # index.html so deep links (e.g. /land-search) don't 404 on refresh.
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+# --- Alternative: use Render's own free Postgres instead of an external one ---
+# Fine for a short-lived demo (30 days), risky for anything you want to keep.
+# To use this instead: uncomment the block below, and in the backend
+# service's envVars above, replace the five DB_* `sync: false` entries with:
+#   - key: DB_HOST
+#     fromDatabase: { name: land-registration-db, property: host }
+#   - key: DB_PORT
+#     fromDatabase: { name: land-registration-db, property: port }
+#   - key: DB_NAME
+#     fromDatabase: { name: land-registration-db, property: database }
+#   - key: DB_USER
+#     fromDatabase: { name: land-registration-db, property: user }
+#   - key: DB_PASSWORD
+#     fromDatabase: { name: land-registration-db, property: password }
+# ...and change DB_SSL to "false" (Render's internal Postgres doesn't need it).
+#
+# databases:
+#   - name: land-registration-db
+#     databaseName: land_registration_db
+#     user: land_registration_user
+#     plan: free

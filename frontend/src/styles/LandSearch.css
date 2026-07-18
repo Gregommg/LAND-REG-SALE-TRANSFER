@@ -1,0 +1,68 @@
+.parcel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.parcel-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.parcel-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.parcel-card-header h4 {
+  font-size: 1rem;
+}
+
+.parcel-location {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  margin-top: -0.5rem;
+}
+
+.parcel-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1rem;
+  margin: 0;
+}
+
+.parcel-details div {
+  display: flex;
+  flex-direction: column;
+}
+
+.parcel-details dt {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+}
+
+.parcel-details dd {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.parcel-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.modal-form label {
+  margin-top: 0.5rem;
+}

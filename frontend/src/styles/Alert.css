@@ -1,0 +1,38 @@
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  margin-bottom: 1.25rem;
+}
+
+.alert-success {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.alert-error {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.alert-info {
+  background-color: var(--color-info-light);
+  color: var(--color-info);
+}
+
+.alert-close {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+}
+.alert-close:hover {
+  opacity: 1;
+}

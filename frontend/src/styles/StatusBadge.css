@@ -1,0 +1,51 @@
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.status-registered {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.status-for_sale {
+  background-color: var(--color-info-light);
+  color: var(--color-info);
+}
+
+.status-under_transfer {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+.status-transferred {
+  background-color: var(--color-purple-light);
+  color: var(--color-purple);
+}
+
+.status-disputed {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.status-pending {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+.status-approved,
+.status-completed {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.status-rejected {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+}

@@ -1,0 +1,138 @@
+:root {
+  --color-primary: #16693f;
+  --color-primary-dark: #0e4a2b;
+  --color-primary-light: #e6f4ec;
+  --color-accent: #b98a2c;
+  --color-danger: #b3261e;
+  --color-danger-light: #fbe9e7;
+  --color-success: #1e7d3c;
+  --color-success-light: #e6f4ea;
+  --color-warning: #a05a00;
+  --color-warning-light: #fdf1de;
+  --color-info: #1f5fa8;
+  --color-info-light: #e8f1fb;
+  --color-purple: #5b3fa8;
+  --color-purple-light: #ece7fb;
+
+  --color-bg: #f5f6f4;
+  --color-surface: #ffffff;
+  --color-border: #dfe3df;
+  --color-text: #202521;
+  --color-text-muted: #62695f;
+
+  --color-mobile-bar: #f2c14e;
+  --color-mobile-bar-dark: #d9a441;
+  --color-mobile-bar-light: #fdf1d2;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --shadow-sm: 0 1px 2px rgba(20, 30, 20, 0.06);
+  --shadow-md: 0 4px 16px rgba(20, 30, 20, 0.08);
+
+  --font-sans: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+
+  --sidebar-width: 240px;
+  --navbar-height: 68px;
+}
+
+/* Dark mode palette, toggled via the sun/moon button in the navbar
+   (persisted to localStorage, see ThemeContext). Component CSS never
+   references colors directly - it's all through these variables, so
+   switching this block is enough to re-theme the whole app. */
+[data-theme="dark"] {
+  --color-primary: #2f9d63;
+  --color-primary-dark: #123c26;
+  --color-primary-light: rgba(47, 157, 99, 0.16);
+  --color-accent: #d1a039;
+  --color-danger: #e5675d;
+  --color-danger-light: rgba(229, 103, 93, 0.16);
+  --color-success: #4caf72;
+  --color-success-light: rgba(76, 175, 114, 0.16);
+  --color-warning: #d99a3d;
+  --color-warning-light: rgba(217, 154, 61, 0.18);
+  --color-info: #5b9bd9;
+  --color-info-light: rgba(91, 155, 217, 0.18);
+  --color-purple: #b39ddb;
+  --color-purple-light: rgba(179, 157, 219, 0.18);
+
+  --color-bg: #141712;
+  --color-surface: #1c201a;
+  --color-border: #333a2e;
+  --color-text: #e9ece5;
+  --color-text-muted: #9aa294;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+.muted {
+  color: var(--color-text-muted);
+}
+
+.muted-small {
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.page-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}

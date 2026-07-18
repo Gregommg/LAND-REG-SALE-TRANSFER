@@ -1,0 +1,115 @@
+.title-deed-toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.title-deed-certificate {
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-primary-dark);
+  border-radius: var(--radius-md);
+  padding: 2.5rem;
+  max-width: 720px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-md);
+}
+
+.deed-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  text-align: center;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.deed-emblem {
+  font-size: 2rem;
+  color: var(--color-primary-dark);
+}
+
+.deed-header h2 {
+  font-size: 1.15rem;
+}
+
+.deed-header p {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
+.deed-title {
+  text-align: center;
+  font-size: 1.4rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  margin-bottom: 1.5rem;
+}
+
+.deed-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.deed-table th, .deed-table td {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 0.9rem;
+}
+
+.deed-table th {
+  width: 40%;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.deed-statement {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.deed-signatures {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.deed-signatures div {
+  flex: 1;
+  text-align: center;
+}
+
+.deed-signature-line {
+  border-top: 1px solid var(--color-text);
+  margin-bottom: 0.4rem;
+  height: 2.5rem;
+}
+
+.deed-signatures p {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+@media print {
+  .no-print,
+  .navbar,
+  .sidebar {
+    display: none !important;
+  }
+  .app-content {
+    padding: 0;
+    max-width: none;
+  }
+  .title-deed-certificate {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+}
