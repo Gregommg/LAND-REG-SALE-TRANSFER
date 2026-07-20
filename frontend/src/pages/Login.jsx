@@ -72,6 +72,7 @@ export default function Login() {
           Don&apos;t have an account? <Link to="/register">Register here</Link>
         </p>
 
+        {/* Demo accounts hidden from the UI
         <div className="auth-demo-note">
           <strong>Demo accounts</strong> (password: <code>Password123!</code>)
           <ul>
@@ -84,6 +85,7 @@ export default function Login() {
             New sign-ups register as a plain citizen and need admin/registrar approval before they can log in.
           </p>
         </div>
+        */}
       </div>
     </div>
   );
