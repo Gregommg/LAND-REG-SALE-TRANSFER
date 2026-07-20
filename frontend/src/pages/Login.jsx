@@ -72,7 +72,7 @@ export default function Login() {
           Don&apos;t have an account? <Link to="/register">Register here</Link>
         </p>
 
-        <div className="auth-demo-note">
+        {*<div className="auth-demo-note">
           <strong>Demo accounts</strong> (password: <code>Password123!</code>)
           <ul>
             <li>admin@landregistry.go.ke &mdash; Administrator</li>
@@ -83,7 +83,7 @@ export default function Login() {
           <p className="field-hint">
             New sign-ups register as a plain citizen and need admin/registrar approval before they can log in.
           </p>
-        </div>
+        </div>*}
       </div>
     </div>
   );
