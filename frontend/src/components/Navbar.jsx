@@ -28,7 +28,7 @@ export default function Navbar() {
       <div className="navbar-brand">
         <span className="navbar-logo">⚑</span>
         <div>
-          <h1>Land Registration System</h1>
+          <h1>Land MANAGEMENT System</h1>
           <p>Ministry of Lands and Physical Planning &mdash; Kenya</p>
         </div>
       </div>
