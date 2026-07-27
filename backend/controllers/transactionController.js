@@ -343,9 +343,13 @@ async function rejectTransaction(req, res, next) {
     }
 
     await client.query(
-      `UPDATE transactions SET status = 'rejected', approved_by = $1, decided_at = NOW(), notes = COALESCE($2, notes)
-       WHERE id = $3`,
-      [req.user.id, reason, tx.id]
+  `UPDATE land_parcels
+   SET status = CASE
+       WHEN asking_price IS NOT NULL THEN 'for_sale'::parcel_status
+       ELSE 'registered'::parcel_status
+   END
+   WHERE id = $1`,
+  [tx.parcel_id]
     );
 
     await client.query(
