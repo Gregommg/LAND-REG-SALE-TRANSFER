@@ -4,7 +4,6 @@ import { useAuth } from "../context/AuthContext";
 /**
  * Wraps a route so it requires authentication, and optionally restricts
  * access to a set of roles.
- * Usage: <ProtectedRoute roles={["admin","registrar"]}><Page /></ProtectedRoute>
  */
 export default function ProtectedRoute({ children, roles }) {
   const { user, loading } = useAuth();
